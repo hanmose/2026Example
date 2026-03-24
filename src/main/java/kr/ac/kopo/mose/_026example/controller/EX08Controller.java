@@ -1,4 +1,4 @@
 package kr.ac.kopo.mose._026example.controller;
 
-public class EX02Controller {
+public class EX08Controller {
 }
