@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>파일전송결과페이지</title>
+    <title>파일 전송 결과</title>
 </head>
 <body>
-    <h1 th:text="${title}"></h1>
-    <p>원본파일이름: <span th:utext="${originFileName}"/></p>
-    <p>컴퓨터저장파일이름: <span th:utext="${saveFileName}"/></p>
-    <p><img th:src="'/images/' + ${saveFileName}" width="250"/></p>
+<h1 th:text="${title}">제목</h1>
+<hr>
+<p>원본 파일 이름: <span th:text="${originFileName}"></span></p>
+<p>서버 저장 이름: <span th:text="${saveFileName}"></span></p>
+
+<h3>전송된 이미지:</h3>
+<p>
+    <img th:src="|/chap07/images/${saveFileName}|" width="400" />
+</p>
+
+<br>
+<a href="/chap07/form">다시 업로드</a>
 </body>
 </html>
