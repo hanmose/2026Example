@@ -1,4 +1,4 @@
-package kr.ac.kopo.mose._026example.controller;
+package kr.ac.kopo.minn._026example.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -71,5 +71,15 @@ public class Chap10_01Controller {
     @GetMapping("/manager/tag")
     public String requestMethod9(Model model){
         return "viewPage10_03";
+    }
+
+    @GetMapping("/exam04")
+    public String requestMethod10(Model model){
+        return "viewPage10_04";
+    }
+
+    @GetMapping("/admin/tag")
+    public String requestMethod11(Model model){
+        return "viewPage10_04";
     }
 }
