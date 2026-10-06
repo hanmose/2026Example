@@ -5,10 +5,9 @@ import kr.ac.kopo.mose._026example.repository.Member3Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 //JPA 첫번째 예제
 @Controller
@@ -35,6 +34,28 @@ public class Chap14_01Controller {
     @PostMapping("/insert")
     public String insertMember3(@ModelAttribute("member") Member3 member3){
         repository.save(member3);
+        return "redirect:/exam14_01";
+    }
+
+//   Read(Update(update)할 내용 입력하기 위한 조회)
+    @GetMapping("/edit/{id}")
+    public String updateInputMethod(@PathVariable(name = "id")int id, Model model){
+        Optional<Member3> member3 =  repository.findById(id);
+        model.addAttribute("member", member3);
+        return "viewPage02_edit";
+    }
+
+//    Update(update) 실행
+    @PostMapping("/update")
+    public String updateMember(@ModelAttribute("member")Member3 member3){
+        repository.save(member3);
+        return "redirect:/exam14_01";
+    }
+
+//    Delete 실행
+    @GetMapping("/delete/{id}")
+    public String deleteMember(@PathVariable(name = "id")int id){
+        repository.deleteById(id);
         return "redirect:/exam14_01";
     }
 }
